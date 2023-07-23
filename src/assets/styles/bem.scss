@@ -1,0 +1,41 @@
+$namespace: "todo" !default;
+$block-sel: "-" !default;
+$elem-sel: "__" !default;
+$mod-sel: "--" !default;
+@mixin bfc {
+    overflow: hidden;
+    height: 100%;
+}
+// Block
+@mixin b($block) {
+    $B: #{$namespace + $block-sel + $block};
+    .#{$B} {
+        @content;
+    }
+}
+
+// ELEMENT
+
+@mixin e($elem) {
+    $selector: &;
+    @at-root {
+        #{$selector + $elem-sel + $elem} {
+            @content;
+        }
+    }
+}
+
+// MODIFIER
+@mixin m($modify) {
+    $selector: &;
+    @at-root {
+        #{$selector + $mod-sel + $modify} {
+            @content;
+        }
+    }
+}
+
+// Theme Color
+@mixin theme-primary {
+    color: #4772fa;
+}

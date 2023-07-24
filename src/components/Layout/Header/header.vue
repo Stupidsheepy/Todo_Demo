@@ -13,5 +13,9 @@
     border-bottom: 1px solid #ccc;
     font-size: 40px;
     margin-bottom: 20px;
+
+    @media screen and (max-width: 500px) {
+        font-size: 20px;
+    }
 }
 </style>

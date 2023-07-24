@@ -1,38 +1,27 @@
 <template>
-    <div class="todo-container">
-        <div class="todo-inputContainer">
-            <!-- no v-model saveContent cause every change sends -->
-            <input type="text" class="todo-input" :placeholder="placeholderWords" @keydown.enter="saveTodo"
-                @focus="showIcon(true)" @blur="showIcon(false)" v-model="inputContent" />
-            <todo-icon :class="iconShowClass" class="fa-xl icon-01 icon" :icon="['far', 'calendar-days']"
-                :style="iconStyles[0]" @mouseover="changeIconColor(true, 0)"
-                @mouseout="changeIconColor(false, 0)"></todo-icon>
-            <todo-icon :class="iconShowClass" class="fa-xl icon-02 icon" :icon="['fas', 'chevron-down']"
-                :style="iconStyles[1]" @mouseover="changeIconColor(true, 1)"
-                @mouseout="changeIconColor(false, 1)"></todo-icon>
-        </div>
-        <TodoList :title="saveContent" @show-todo-list="showTodoList"></TodoList>
-
+    <div class="todo-inputContainer">
+        <!-- no v-model saveContent cause every change sends -->
+        <input type="text" class="todo-input" :placeholder="placeholderWords" @keydown.enter="saveTodo"
+            @focus="showIcon(true)" @blur="showIcon(false)" v-model="inputContent" />
+        <todo-icon :class="iconShowClass" class="fa-xl icon-01 icon" :icon="['far', 'calendar-days']" :style="iconStyles[0]"
+            @mouseover="changeIconColor(true, 0)" @mouseout="changeIconColor(false, 0)"></todo-icon>
+        <todo-icon :class="iconShowClass" class="fa-xl icon-02 icon" :icon="['fas', 'chevron-down']" :style="iconStyles[1]"
+            @mouseover="changeIconColor(true, 1)" @mouseout="changeIconColor(false, 1)"></todo-icon>
     </div>
 </template>
 <script setup lang='ts'>
-import { ref, reactive, onMounted, onBeforeMount } from 'vue';
-import TodoList from '../../Tool/TodoList.vue'
+import { ref } from 'vue';
 const placeholderWords = ref<string>('+添加任务至“收集箱”，回车即可创建');
-// todo show modules
 const inputContent = ref<string>('');
 const saveContent = ref<string>('');
-let saveTodo = () => {
-    console.log('saveTodo');
-    // TODO 保存todo
-    saveContent.value = inputContent.value;
-    console.log(saveContent.value);
-    inputContent.value = '';
-}
-let showTodoList = (todoList: any) => {
-    console.log(todoList);
-}
+const emit = defineEmits(['get-todo']);
 
+let saveTodo = () => {
+    if (inputContent.value === '') return;
+    saveContent.value = inputContent.value;
+    inputContent.value = '';
+    emit('get-todo', saveContent.value);
+}
 // icon modules
 const iconShowClass = ref<string>('hidden');
 const iconStyles = ref([
@@ -43,7 +32,6 @@ const iconStyles = ref([
 ]);
 let showIcon = (show: boolean) => {
     if (show === true) {
-        console.log('nihao');
         iconShowClass.value = '';
     } else {
         iconShowClass.value = 'hidden';
@@ -60,30 +48,13 @@ let changeIconColor = (isChange: boolean, num: number) => {
 <style lang='scss' scoped>
 $inputColor : #f3f4f7;
 $placeholderColor : #c1c1c4;
-
 $outlineColor :#4772fa;
 
-@include b(container) {
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    padding: 0 10px;
-    height: 85vh; // pin here
-    overflow: auto;
-    position: relative;
-    border-right: 1px solid #ccc;
-
-    @media screen and (max-width: 500px) {
-        width: 100%;
-    }
-}
 
 @include b(inputContainer) {
     position: relative;
     width: 100%;
-    min-height: 50px; // pin here why???
+    min-height: 50px; // pin here 
 }
 
 @include b(input) {

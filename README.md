@@ -1,18 +1,17 @@
-# Vue 3 + TypeScript + Vite
+# TodoList Demo
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+English_Version | [简体中文](README_zh_CN.md)
 
-## Recommended IDE Setup
+> Tech stack: Vue 3 + TypeScript + Vite + Sass + BEM + FontAwesome + animate.css + Adaptive design
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+---
 
-## Type Support For `.vue` Imports in TS
+This is my first fairly complete Vue 3 front-end practice project with imitating TickTick App. Since it's for practice, I tried to apply as much knowledge as I've learned so far, such as using the BEM (Block+Element+Modifier) CSS architecture, which isn't actually necessary, but I learned it alongside Sass preprocessors, so I decided to use them together. Also, since this is my first Vue 3 project, the coordination between components may not be very proficient yet, but I'm trying to get as close as possible to that modular direction.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+---
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+> If you find this project helpful, feel free to give me a star ✨
+> If you have any suggestions for improvement, please let me know, I'd really appreciate it 😉
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Layout:
+![](https://pic.stupidsheep.fun/vue_todo_list_layout.png)

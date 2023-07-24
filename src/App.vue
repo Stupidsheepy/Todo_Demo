@@ -3,7 +3,6 @@
     </Layout>
 </template>
 <script setup lang='ts'>
-import { ref, reactive, onMounted, onBeforeMount } from 'vue';
 import Layout from './components/Layout/layout.vue';
 </script>
 <style lang='scss'>

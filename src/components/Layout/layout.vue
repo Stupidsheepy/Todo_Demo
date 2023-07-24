@@ -4,14 +4,18 @@
         <div class="todo-mainContainer">
             <Content>
             </Content>
-            <Sider></Sider>
+            <Sider :selectedTodo="selectedTodo"></Sider>
         </div>
     </div>
 </template>
 <script setup lang='ts'>
-import Header from './Header/index.vue'
-import Sider from './Sider/index.vue'
-import Content from './Content/index.vue'
+import Header from './Header/header.vue'
+import Sider from './Sider/sider.vue'
+import Content from './Content/content.vue'
+import { provide, ref } from 'vue';
+
+const selectedTodo = ref<string>('Todo Title')
+provide('selectedTodo', selectedTodo);
 </script>
 <style lang='scss' scoped>
 @include b(layout) {
